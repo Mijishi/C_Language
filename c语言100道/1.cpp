@@ -18,5 +18,5 @@ int main()
 			}
 		}
 	}
-	printf("π≤%d÷÷",cnt);
+	printf("total:%d",cnt);
 } 
