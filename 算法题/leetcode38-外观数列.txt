@@ -1,0 +1,51 @@
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+第一项是数字 1 
+描述前一项，这个数是 1 即 “ 一 个 1 ”，记作 "11"
+描述前一项，这个数是 11 即 “ 二 个 1 ” ，记作 "21"
+描述前一项，这个数是 21 即 “ 一 个 2 + 一 个 1 ” ，记作 "1211"
+描述前一项，这个数是 1211 即 “ 一 个 1 + 一 个 2 + 二 个 1 ” ，记作 "111221"
+
+
+
+char * countAndSay(int n){
+    char *res=(char *)malloc(sizeof(char)*5000);
+    char *temp=(char *)malloc(sizeof(char)*5000);
+    res[0]='1';
+    res[1]='\0';
+    int i,j,cnt;
+    char cur,*p;
+    for(i=1;i<n;i++)
+    {
+        j=0;
+        cur=res[0];
+        cnt=0;
+        p=res;
+        while(*p!='\0')
+        {
+            if(*p==cur)
+            {
+                cnt++;
+            }
+            else{
+                temp[j]=cnt+'0';
+                j++;
+                cnt=1;
+                temp[j]=cur;
+                j++;
+                cur=*p;
+            }
+            p++;
+        }
+        temp[j]=cnt+'0';
+        j++;
+        temp[j]=cur;
+        j++;
+        temp[j]='\0';
+        strcpy(res,temp);
+    }
+    return res;
+}
